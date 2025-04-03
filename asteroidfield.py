@@ -5,6 +5,8 @@ from constants import *
 
 
 class AsteroidField(pygame.sprite.Sprite):
+    spawn_rate = ASTEROID_SPAWN_RATE
+
     edges = [
         [
             pygame.Vector2(1, 0),
@@ -38,7 +40,7 @@ class AsteroidField(pygame.sprite.Sprite):
 
     def update(self, dt):
         self.spawn_timer += dt
-        if self.spawn_timer > ASTEROID_SPAWN_RATE:
+        if self.spawn_timer > self.spawn_rate:
             self.spawn_timer = 0
 
             edge = random.choice(self.edges)
